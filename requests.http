@@ -1,0 +1,33 @@
+@hostname = localhost
+@port = 5000
+@baseUrl = http://{{hostname}}:{{port}}
+@port_https = 5001
+@baseUrl_https = https://{{hostname}}:{{port_https}}
+
+### GET Greeting - HTTP
+GET {{baseUrl}}/api/greeting/hello
+Content-Type: application/json
+
+###
+
+### GET Greeting - HTTPS (con certificado autofirmado)
+GET {{baseUrl_https}}/api/greeting/hello
+Content-Type: application/json
+
+###
+
+### GET Greeting - Con custom header
+GET {{baseUrl}}/api/greeting/hello
+Content-Type: application/json
+Accept: application/json
+User-Agent: PruebasSonar/1.0
+
+###
+
+### GET Greeting - Formato alternativo
+@method = GET
+@url = {{baseUrl}}/api/greeting/hello
+
+{{method}} {{url}}
+
+###
